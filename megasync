@@ -1,6 +1,16 @@
 
+Append to /etc/pacman.conf
 
-yaourt -S libpdfium-nojs
+###REPO for MEGA###
+[DEB_Arch_Extra]
+SigLevel = Optional TrustAll
+Server = https://mega.nz/linux/MEGAsync/Arch_Extra/$arch
+###END REPO for MEGA###
 
-yaourt -S megasync
+upgrade pacman:
 
+pacman -Sy
+
+install megasync:
+
+pacman -S megasync
