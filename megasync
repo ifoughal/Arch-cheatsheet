@@ -1,0 +1,6 @@
+
+
+yaourt -S libpdfium-nojs
+
+yaourt -S megasync
+
