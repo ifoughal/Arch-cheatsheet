@@ -9,18 +9,15 @@ in this example, we'll be cloning and builinding in /opt:
 cd /opt 
 git clone https://github.com/doitsujin/dxvk.git
 
-git clone https://github.com/HansKristian-Work/vkd3d-proton.git
-
-cd /opt/vkd3d-proton/subprojects
-git clone https://github.com/KhronosGroup/Vulkan-Headers/tree/fa27a13cf74080df2ad421a788299db1276f17a7
-git clone https://github.com/HansKristian-Work/dxil-spirv.git 
-git clone https://github.com/KhronosGroup/SPIRV-Headers.git
+git clone --recursive https://github.com/HansKristian-Work/vkd3d-proton
 
 ## conpile the projects:
 conpiling dxvk
 cd /opt/dxvk
 
 ./package-release.sh master /opt/ --no-package
+
+cd /opt/vkd3d-proton
 
 
 ## install projects in wineprefix:
