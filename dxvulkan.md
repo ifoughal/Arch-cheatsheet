@@ -50,10 +50,10 @@ cd /opt/vkd3d-proton-master
 
 ## mkdir x32 & x64 for lutris for our custom dxvk-proton builds
 mkdir -p ~/.local/share/lutris/runtime/dxvk/master/x32
-mkdir -p ~/.local/share/lutris/runtime/master/x64
+mkdir -p ~/.local/share/lutris/runtime/dxvk/master/x64
 
 cp /opt/dxvk-master/x32/* ~/.local/share/lutris/runtime/dxvk/master/x32
-cp /opt/dxvk-master/x64/* ~/.local/share/lutris/runtime/master/x64
+cp /opt/dxvk-master/x64/* ~/.local/share/lutris/runtime/dxvk/master/x64
 
 
 mkdir -p ~/.local/share/lutris/runtime/vkd3d/master/x32
