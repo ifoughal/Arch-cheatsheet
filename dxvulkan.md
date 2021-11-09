@@ -81,4 +81,8 @@ cd /opt/vkd3d-proton-master
 WINEPREFIX=~/.local/wineprefix/my_prefix ./setup_vkd3d_proton.sh install
 
 
+## [Troubleshooting]:
+if for some reason you see in the logs of your vulkan compiler that dx12 is not available; then manually probe your gpu:
+
+sudo nvidia-modprobe -u -c=0
 
