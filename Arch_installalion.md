@@ -40,7 +40,7 @@ timedatectl status
 ## step 3:
 list all available drives:
 ``` console
-lblsk
+lsbl²k
 ```
 ## step 4:
 Chose a drive where you want to install your arch:
