@@ -8,8 +8,16 @@ This will replace all the git clone commands url with ssh.
  
 ## Github/Gitlab SSH-keys:
 Generate a new certificate for the specific user:
+For example, for ED25519:
+1: 
 ``` console
 $ ssh-keygen -t ed25519 -C " < username or email > "
+```
+
+For 2048-bit RSA:
+2: 
+``` console
+ssh-keygen -t rsa -b 2048 -C
 ```
 
 Bind it to the SSH engine on your host:
