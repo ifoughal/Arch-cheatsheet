@@ -27,9 +27,12 @@ $ eval `ssh-agent -s` && ssh-add /path/to/certificate
 ```
 
 b. permanantly:
+modifiy your ssh profile: 
+vi ~/.ssh/config
 ``` console
-User < username or email >
-IdentityFile /path/to/certificate
+host node_name
+ User < username or email >
+ IdentityFile /path/to/certificate
 ```
 
 test your ssh key:
