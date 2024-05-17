@@ -10,7 +10,6 @@ Host my-network-jumphost
   LocalForward 65022 localhost:22
   PreferredAuthentications password
   RequestTTY yes
-  RemoteCommand ifoughal ifoughal_1 10.10.10.1 -vp 'ifoughal-password' -tpw 'ifoughal_1-password' -tunnel 22
 
 Host my-network-jumphost-ports_forwarder
   HostName 127.0.0.1
