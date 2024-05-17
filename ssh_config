@@ -1,0 +1,22 @@
+ ~/.ssh/config 
+
+
+# jumphost with port forwarding when going through 1+n jumphosts:
+
+Host my-network-jumphost
+  HostName my-network-jumphost
+  User ifoughal
+  Port 1234
+  LocalForward 65022 localhost:22
+  PreferredAuthentications password
+  RequestTTY yes
+  RemoteCommand ifoughal ifoughal_1 10.10.10.1 -vp 'ifoughal-password' -tpw 'ifoughal_1-password' -tunnel 22
+
+Host my-network-jumphost-ports_forwarder
+  HostName 127.0.0.1
+  User ifoughal
+  Port 65022
+  LocalForward 8080 10.66.14.145:80
+  LocalForward 8443 10.66.14.145:443
+  # etc.
+  IdentityFile /path/to/cert.crt
