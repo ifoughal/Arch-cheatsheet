@@ -12,6 +12,10 @@ sudo lspci -vd ::0200   # Ethernet controllers
 sudo lspci -vd ::0280   # Wireless controllers
 ```
 
+### Option 3: list with product name:
+```bash
+sudo lspci -vvv | grep -i ethernet
+```
 
 ## list interface details such as speed, link mode etc
 
