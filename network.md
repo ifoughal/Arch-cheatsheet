@@ -37,3 +37,8 @@ done
 ```bash
 ip -br link
 ```
+
+## delete all nmcli connections (clean slate)
+```bash
+nmcli -t -f NAME connection show | awk '{print "\"" $0 "\""}' | xargs -n1 nmcli connection delete
+```
