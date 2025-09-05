@@ -25,3 +25,15 @@ ethtool <interface-name>
 nmcli device status
 ```
 
+## show all interfaces with their speed:
+```bash
+for nic in $(ls /sys/class/net | grep -v lo); do
+  echo -n "$nic: "
+  ethtool $nic 2>/dev/null | grep -i "Speed"
+done
+```
+
+## show all interfaces with their state & macaddress:
+```bash
+ip -br link
+```
