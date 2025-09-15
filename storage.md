@@ -69,7 +69,7 @@ Ceph is a unified distributed storage system, supporting:
   - Aggregates real-time metrics
   - Host for pluggable maangement functions
   - 1 active + 1 standby per clsuter
-- OSDs:
+- OSDs (Object Storage Daemons):
   - stores data on devices (HDD, SSD, NVMe, etc)
   - services I/O requests to clients
   - peers, replicates and rebalances data
@@ -100,13 +100,35 @@ Ceph is a unified distributed storage system, supporting:
   - Enables access modes: readwrite once/many, readonly many
   - defined via the k8s storage class
   - matches the pods PVC to a new RBD volume or CephFS subvolume, which gets automounted during the pod creation
-- RGW: object storage access, 1 process minimum
-
-  
-- 
+- RGW: RADOS gateway
+  - Object storage interface that exposes Ceph Storage as an object store, compatible with S3/swift APIs
+  - PODS can I/O over HTTP
+  - data is stored in RADOS
+  - Multi tenancy ensures multiple users/buckets & quotas
+  - scales well since its based on RADOS
+  - Fault tolerance & fail over with RADOS
+  - optional caching/CDN 
+ 
 ### ROOK:
-Manager of ceph for kubernetes
-Runs a statefulset on all nodes
-
-
+Manager of ceph for kubernetes, is an Operator that abstracts and streamlines the management and deployment of Ceph
+- Role:
+  - Deploys storage cluster as kubernetes objects through CRDs:
+    - CRDs define the nodes & their disks to be used as storage devices
+    - Number of Monitors
+    - Pools for RBD/CephFS
+    - StorageClass creation 
+  - Automates complex management tasks:
+    - Provisionning storage daemons (Ceph OSDs, monitors, MDS, RGW)
+    - scaling up / down
+    - Upgrading Storage software
+    - healing and failover through disk/node failure detection
+    - replication, snapshots & clonning
+  - Provides native k8s storage: PVs & storage classes to be consumed by pods
+  - CRUSH maps management (Controlled Replication Under Scalabe hashing):
+    - algorithm used by ceph to decide where to store data accross OSDs
+    - defines the following:
+      - OSDs (Objct Storage Disks)
+      - Hosts (nodes)
+      - Racks & Rows & DCs to ensure fault tolerance (failureDomain: host/osd/rack)
+  
 
