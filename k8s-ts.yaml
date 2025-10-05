@@ -1,0 +1,24 @@
+
+Trouble shoot nodes with:
+```
+# check connectivity to CP node
+CP_IP=10.10.10.10
+CP_PORT=6443
+nc -zv $CP_IP:$CP_PORT
+
+# Check container runtime (containerd)
+systemctl status containerd
+crictl info
+
+# check cilium pods:
+kubectl -n kube-system get pods -l k8s-app=cilium
+CILIUM_POD=agent/envoy/operator
+kubectl -n kube-system logs $CILIUM_POD
+
+# Check /etc/cni/net.d
+ls /etc/cni/net.d
+
+# check kubelet logs:
+journalctl -u kubelet -f
+
+```
